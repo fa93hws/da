@@ -58,6 +58,7 @@ export default {
     this.setUrl(this.$route.hash);
     const onScroll = throttle(this.onScroll, SCROLL_THROTTLE);
     document.addEventListener('scroll', onScroll);
+    this.$nextTick(onScroll);
   }
 }
 </script>
