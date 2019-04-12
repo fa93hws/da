@@ -4680,6 +4680,11 @@ lodash.memoize@^4.1.2:
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
 
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
+
 lodash.transform@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.transform/-/lodash.transform-4.6.0.tgz#12306422f63324aed8483d3f38332b5f670547a0"
@@ -7619,6 +7624,11 @@ vue-loader@^15.6.4:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-router@^3.0.1:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.3.tgz#370ca607475c45a1cfab2d9d2ac846feab1c534c"
+  integrity sha512-62rB6GjJuyklnLL+yKST469yCYj93SXEn8rpYjxgLwv0aH/Fd6OApD8Hgi9RlraZ1OOwv3jPQvZTtf1GixYW+g==
 
 vue-style-loader@^4.1.0:
   version "4.1.2"
