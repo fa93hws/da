@@ -2,16 +2,19 @@
 <div>
   <ul>
     <li
-      v-for="point in anchorPoints"
+      v-for="(point, idx) in anchorPoints"
       :key="point.id"
     >
       <a
         :href="point.hashUrl"
         :id="point.id"
+        ref="anchors"
       >
-        <h3>
-          {{point.title}}
-        </h3>
+        <h1
+          :class="{hightlight: idx === highlightIdx}"
+        >
+          {{idx + 1}} - {{point.title}}
+        </h1>
       </a>
     </li>
   </ul>
@@ -20,6 +23,9 @@
 
 <script>
 import { getId, getHashUrl } from './anchor_points';
+import { isElementInViewport } from './is_visible';
+import throttle from 'lodash.throttle';
+const SCROLL_THROTTLE = 500;
 export default {
   name: 'HelloWorld',
   data() {
@@ -28,16 +34,30 @@ export default {
         id: getId(p),
         hashUrl: getHashUrl(p),
         title: p,
-      }))
+      })),
+      highlightIdx: -1,
     }
   },
   methods: {
     setUrl(url) {
-      location.href = url;
+      if(url !== '') {
+        location.href = url;
+      }
+    },
+    onScroll() {
+      const { anchors = [] } = this.$refs;
+      for(let i = 0; i < anchors.length; i++) {
+        if (isElementInViewport(anchors[i])) {
+          this.highlightIdx = i;
+          break;
+        }
+      }
     }
   },
   mounted() {
-    this.$nextTick(() => this.setUrl(this.$route.hash))
+    this.setUrl(this.$route.hash);
+    const onScroll = throttle(this.onScroll, SCROLL_THROTTLE);
+    document.addEventListener('scroll', onScroll);
   }
 }
 </script>
@@ -55,5 +75,9 @@ a {
 
 a:visited {
   color: inherit;
+}
+
+.hightlight {
+  color: red;
 }
 </style>
